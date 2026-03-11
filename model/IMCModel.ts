@@ -1,3 +1,14 @@
+enum IMCClassification {
+    Underweight = 18.5,
+    Normal = 25,
+    Overweight = 30,
+    ObeseI = 35,
+    ObeseII = 40,
+    ObeseIII = Infinity
+}
+
+
+
 export const IMCModel = {
   calculate(weightKg, heightM) {
     const imc = weightKg / (heightM * heightM);
@@ -5,15 +16,15 @@ export const IMCModel = {
   },
 
   classify(imc) {
-    if (imc < 18.5) 
+    if (imc < IMCClassification.Underweight) 
         return { label: 'Abaixo do peso', color: '#60A5FA', emoji: '🌧️' };
-    if (imc < 25)   
+    if (imc < IMCClassification.Normal)   
         return { label: 'Peso normal', color: '#34D399', emoji: '✨' };
-    if (imc < 30)   
+    if (imc < IMCClassification.Overweight)   
         return { label: 'Sobrepeso', color: '#FBBF24', emoji: '⚡' };
-    if (imc < 35)   
+    if (imc < IMCClassification.ObeseI)   
         return { label: 'Obesidade grau I', color: '#F97316', emoji: '🔥' };
-    if (imc < 40)   
+    if (imc < IMCClassification.ObeseII)   
         return { label: 'Obesidade grau II',color: '#EF4444', emoji: '⚠️' };
     return { label: 'Obesidade grau III',     color: '#DC2626', emoji: '🚨' };
   },
